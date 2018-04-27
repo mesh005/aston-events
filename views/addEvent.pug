@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1 Create An Event
+  .container-fluid
+   .row
+     .col-sm-6.col-sm-offset-3
+       .panel.panel-default
+         .panel-body
+           form(action='/create', method='POST')
+             .form-group
+               select.form-control(name='event_category')
+                 option(value='0', default='') Select a category
+                 option(value='Sport') Sport
+                 option(value='Culture') Culture
+                 option(value='Other') Other
+               br
+               input.form-control(type='text', name='event_name', placeholder='Event name')
+               br
+               input.form-control(type='text', name='location', placeholder='Location')
+               br
+               input.form-control(type='text', name='description', placeholder='Description')
+               br
+               input.form-control(type='datetime-local', name='date', placeholder='Event Date')
+               br
+             .form-group
+               button.btn.btn-success(type='submit') Create
+               a.btn.btn-default(href='/') Cancel

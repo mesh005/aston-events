@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1 Edit event
+  .container-fluid
+   .row
+     .col-sm-6.col-sm-offset-3
+       .panel.panel-default
+         .panel-body
+           form(action='/events/edit/'+ result._id, method='POST')
+             .form-group
+               select.form-control(name='event_category', value=result.event_category)
+                 option(value='0', default='') Select a category
+                 option(value='Sport') Sport
+                 option(value='Culture') Culture
+                 option(value='Other') Other
+               br
+               input.form-control(type='text', name='event_name', placeholder='Event name', value=result.event_name)
+               br
+               input.form-control(type='text', name='location', placeholder='Location', value=result.location)
+               br
+               input.form-control(type='text', name='description', placeholder='Description', value=result.description)
+               br
+               input.form-control(type='datetime-local', name='date', placeholder='Event Date', value=result.date)
+               br
+             .form-group
+               button.btn.btn-success(type='submit') Complete
+               a.btn.btn-default(href='/') Cancel

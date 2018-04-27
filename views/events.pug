@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1 Organized by #{host}
+  .card(style='width: 18rem;')
+    img.card-img-top(src='')
+    .card-body
+      h3.card-title= result.event_name
+      p.card-text= result.description
+    ul.list-group.list-group-flush
+      li.list-group-item= "Category: " +result.event_category
+      li.list-group-item= "Location: " + result.location
+      li.list-group-item= "Date and Time: " +result.date
+    p Contact #{email} for further details
+
+      
+    br
+    a.btn.btn-primary(href='/') Back
+    if user
+      if user.id == result.organiser
+        a.btn.btn-default(href='edit/'+ result._id) Edit
+    

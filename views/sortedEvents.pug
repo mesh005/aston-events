@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1 #{title} events
+  each result, i in events
+    .container-fluid
+      .d-md-flex.flex-md-equal.w-100.my-md-3.pl-md-3
+        .bg-dark.mr-md-3.pt-3.px-3.pt-md-5.px-md-5.text-center.text-white.overflow-hidden
+          .my-3.py-3
+            h2.display-5= result.event_name
+            p.lead= result.description
+              p.lead= result.date
+          .bg-light.box-shadow.mx-auto(style='width: 80%; height: 300px; border-radius: 21px 21px 0 0;')
+      form(action='/like/'+result._id, method='POST')
+        .form-group
+          a.btn.btn-outline-secondary.btm-sm(href='/events/'+result._id) Learn More
+          button.btn.btn-primary(type='submit') Like Event
+          br
+          if result.__v == 1
+            p= result.__v+ " person has liked this event"
+          else 
+            p= result.__v + " people have liked this event"
+        
